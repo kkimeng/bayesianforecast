@@ -1,7 +1,4 @@
 library(rjags)
-##Set working directory
-#setwd("H:/StrategicInitiatives/Research & Analytics/Ridership Analysis/Data and Models/By Route")
-options(digits=2)
 
 express = read.csv("express.csv")
 n=length(express[,1])
@@ -43,8 +40,7 @@ beta3=samp$beta3
 beta5=samp$beta5
 #END JAGS HERE
 
-forecast = function(ei=150,temp=10) {
-  lagRides = (express$ridership.counts/1000)[length(express$ridership.counts)]
+forecast = function(ei=150,temp=10,lagRides=(express$ridership.counts/1000)[length(express$ridership.counts)]) {
   return(beta0+beta2*lagRides+beta3*ei+beta5*temp)
 }
 

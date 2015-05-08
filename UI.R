@@ -13,12 +13,8 @@ shinyUI(fluidPage(
                          min = 100, max = 200, value = mean(express$econ_index)),
              sliderInput("Temperature", label = h3("Temperature"),
                          min = -50, max = 100, value = mean(express$Temperature)),
-    
-    sliderInput("bins",
-                label = h3("Number of bins:"),
-                min = 1,
-                max = 100,
-                value = 50)
+             sliderInput("LaggedRidership",label=h3("Lagged Ridership (thousands)"),
+                         min = 100, max=1500, value=mean(express$ridership.counts/1000))
   ),
     # Show a plot of the generated distribution
     mainPanel(
